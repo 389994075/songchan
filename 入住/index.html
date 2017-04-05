@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>入住信息</title>
+    <meta charset="utf-8">
+    <style>
+        li{
+            list-style: none;
+        }
+        span{
+            font-size:20px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>酒店入住<span>+</span></div>
+    <ul>
+        <li>入住人员1<input type="text"><span class="del">x</span></li>
+        <li>入住人员2<input type="text"><span class="del">x</span></li>
+    </ul>
+<script src="./js/jquery1.7.js"></script>
+<script>
+    $(function(){
+        //添加
+        $("span").click(function(){
+            var b=$("ul li").length+1;
+            if(b<9){
+                var a="<li>入住人员"+b+"<input type='text'><span class='del'>x</span></li>";
+                $("ul").append(a);
+            }
+        })
+        //删除
+        $(".del").live("click",function(){
+             $(this).parent().remove();
+        })
+    })
+
+    //html事件 <div onclick=fun()></div>   js:function fun(){}
+    //一级事件 对象.onclick = function(){}
+    //二级事件 addEventListener("click",function(){},false)
+
+    //jq事件 on bind live  div 有10个a  $("div").on("a","click",function(){}) 事件委托 利用了”事件冒泡“  
+</script>
+</body>
+</html>

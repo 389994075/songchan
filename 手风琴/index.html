@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折叠菜单、手风琴</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    #box{width:300px;height:300px;border:0px solid #ccc;margin:auto;}	
+    ul{list-style:none;display: none;}
+    h1{width:300px;height:30px;background:#ccc;font-size:21px;line-height:30px;border-top:1px solid #fff;}
+    ul li{width:300px;height:20px;line-height:20px;background: #ccc;color:#fff;}
+</style>
+<body>
+    <div id="box">
+		<h1>我的大学</h1> <!--标题-->
+        <ul>
+            <li>>清华大学</li>
+            <li>>北京大学</li>
+            <li>>中国海洋大学</li>
+            <li>>河南理工大学</li>
+        </ul>
+        <h1>我的爱好</h1><!--标题-->
+        <ul>
+            <li>>跑步</li>
+            <li>>街头篮球</li>
+            <li>>冲浪</li>
+            <li>>唱歌学习</li>
+        </ul>
+        <h1>我的家乡</h1><!--标题-->
+        <ul>
+            <li>>北湖</li>
+            <li>>步行街</li>
+            <li>>中元街</li>
+            <li>>中原福塔</li>
+        </ul>
+        <h1>我的梦想</h1><!--标题-->
+        <ul>
+            <li>>清华大学</li>
+            <li>>北京大学</li>
+            <li>>中国海洋大学</li>
+            <li>>河南理工大学</li>
+        </ul>
+    </div>	
+
+    <button class="btn">点击</button>
+    <div class="con"></div>
+</body>
+    <script src="js/jquery1.7.js"></script>
+    <script>
+        $(function(){
+            //手风琴效果
+            $("#box h1").on("click",function(){
+                $(this).next().show()   //next()指的是下一个
+                       .stop().siblings("ul").hide();
+            })
+            /*$("ul li").on("hover",function(){
+                $(this).css("color","red").siblings("li").css("color","#000");
+            })*/
+
+            $("ul li").hover(function(){      //对象.hover(function(){},function(){})
+                $(this).css("color","red");
+            },function(){
+                $(this).css("color","#fff");
+            })
+
+           
+
+            //点击循环名字
+            var arr = ["拜晶","韩亚非","李雨溪","陈梦蕊","张立强","郭旭","罗江峰","刘子瑶"];
+            $(".btn").click(function(){
+                var len = arr.length-1;
+
+                var name = Math.ceil(Math.random()*len);
+                $(".con").html(arr[name]);
+            })
+        })
+    </script>
+</html>
